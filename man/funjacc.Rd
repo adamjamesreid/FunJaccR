@@ -33,7 +33,7 @@ funjacc(
 \item{cluster_label_size}{Node size for cluster labels in Cytoscape plotting}
 }
 \value{
-Data frame of results
+list of results elements 'annotation' = clusters and their annotation, 'network' = network of clusters
 }
 \description{
 Determine enriched functional term clusters with FunJacc
