@@ -52,6 +52,7 @@ create_cytoscape_network(funjacc_res, title="Test network")
 The first argument should be a vector of gene names
 
 `species='hsapiens'`
+
 The species used by gProfiler to interpret the gene list you provide e.g. hsapiens, mmusculus, dmelanogaster, 
 
 `data_types=c('GO:BP', 'GO:MF', 'GO:CC', 'KEGG', 'REAC', 'TF', 'MIRNA', 'CORUM', 'HP', 'HPA', 'WP')`
@@ -61,16 +62,21 @@ The functional resources to include in the gProfiler analysis and subsequent clu
 Use 'all' to use the full list of resources
 
 `p_cut=0.01`
+
 The p-value cut off for gProfiler results to be included in clustering
 
 `jaccard_cut=0.5`
+
 The Jaccard index cut off for indentifying links between terms
 
 `inflation=2`
+
 The MCL inflation parameter for determining clusters
 
 `default_node_label_size = 5`
+
 Default size of nodes for cytoscape network
 
 `cluster_label_size = 20`
+
 Size of cluster label nodes for cytoscape network
