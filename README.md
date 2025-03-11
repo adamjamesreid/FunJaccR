@@ -7,32 +7,24 @@ Currently FunJacc is available as a GitHub project and can be installed as follo
 
 1. Clone the repository
 
-``
+`git clone https://github.com/adamjamesreid/FunJaccR.git`
 
+2. Install dependendies
+
+3. Create an R script to load the package
 
 ```
 # Testing FunJacc package
 
 library(devtools)
-load_all(".")
-
-# Regenerate docs
-library(roxygen2)
-roxygenise()
-
+load_all("funjacc")
 
 # Read in example gene list
 gene_list <- as.vector(read.csv('test.list', header=FALSE))$V1
-# This breaks things
-#gene_list <- c("CDK1", "MCCA", "SOX9", "SOX13", "IL4")
 
 # Run Funjacc
-#funjacc_res <- funjacc(gene_list, data_types='all')
-
-data_types=c('GO:CC', 'CORUM')
 funjacc_res <- funjacc(gene_list, data_types='all', species='hsapiens', inflation=2)
 
-#funjacc_res$annotation$cluster_names
-
+# Create Cytoscape network (requires RCy3 and an open Cytoscape session on the same machine as R)
 create_cytoscape_network(funjacc_res, title="Test network")
 ```
