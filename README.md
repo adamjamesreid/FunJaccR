@@ -11,7 +11,7 @@ Currently FunJacc is available as a GitHub project and can be installed as follo
 
 2. Install dependendies
 
-3. Create an R script to load the package
+## Create an R script to load the package and run the test
 
 ```
 # Testing FunJacc package
