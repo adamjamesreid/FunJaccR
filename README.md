@@ -11,13 +11,27 @@ Currently FunJacc is available as a GitHub project and can be installed as follo
 
 2. Install dependendies
 
+```
+install.packages('gRbase')
+install.packages('MCL')
+install.packages('gprofiler2')
+install.packages("stringr")
+
+# Optional for drawing Cytoscape networks
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("RCy3")
+```
+
 ## Create an R script to load the package and run the test
 
 ```
-# Testing FunJacc package
+# Set working directory to the FunJaccR package
+setwd("FunJaccR/")
 
+# Load funjacc package
 library(devtools)
-load_all("funjacc")
+load_all(".")
 
 # Read in example gene list
 gene_list <- as.vector(read.csv('test.list', header=FALSE))$V1
