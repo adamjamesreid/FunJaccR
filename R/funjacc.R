@@ -178,18 +178,57 @@ annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size
   # Add gene lists
   cluster_df$genes <- gprof_res_term_subset[match(rownames(cluster_df), gprof_res_term_subset$term_id),]$intersection
 
-  # Add label node sizes for Cytoscape
-  # !!!!!!!!!!!!!!!!!
+  # Add node label sizes for Cytoscape
+  cluster_df$node_label_size = lapply(cluster_df$term_name == cluster_df$cluster_names, function(x) ifelse(x==TRUE, cluster_label_size, default_node_label_size))
 
   return(cluster_df)
 }
 
+#' Create a FunJacc network in Cytoscape
+#'
+#' Draw the FunJacc results as a network in an open instance of Cytoscape running on the same machine
+#' @param funjacc_results Funjacc results
+#' @param title Network title
+#' @param collection Network collection
+#' @return Sets up a network in your Cytoscape application
+#' @examples
+#' create_cytoscape_network(funjacc_res, title="Test network")
+#' @export
+create_cytoscape_network <- function(funjacc_results, title="my first network", collection="Funjacc Networks"){
+  # load cytoscape package
+  library(RCy3)
+  # Check cytoscape connection
+  cytoscapePing ()
+  cytoscapeVersionInfo ()
 
+  # Create nodes data
+  fj_nodes <- funjacc_results$annotation
+  fj_nodes$id = rownames(funjacc_results$annotation)
+  fj_nodes$mcl_output <-c()
 
-# Prepare output
-# -  Write out gProfiler results, with cluster included
-# Introduce a MAIN function?
-# Add package documentation
+  # Create edges data
+  fj_edges <- data.frame(source=funjacc_results$network$n1, target=funjacc_results$network$n2, weight=as.numeric(funjacc_results$network$j),
+                         stringsAsFactors=FALSE)
 
-# Output files for network drawing with Cytoscape (can we make any useful figure in R?)
+  # Create network
+  createNetworkFromDataFrames(fj_nodes,fj_edges, title=title, collection=collection)
+
+  set_cytoscape_style()
+}
+
+set_cytoscape_style <- function(name="FunJaccStyle"){
+  style.name = name
+  defaults <- list(NODE_SHAPE="circle",
+                   EDGE_TRANSPARENCY=120,
+                   NODE_LABEL_POSITION="W,E,c,0.00,0.00")
+  nodeLabels <- mapVisualProperty('node label','term_name','p')
+  nodeLabelSize <- mapVisualProperty('node label font size','node_label_size','p')
+  nodeFills <- mapVisualProperty('node fill color', 'cluster_colour', mapping.type="passthrough")
+  arrowShapes <- mapVisualProperty('Edge Target Arrow Shape','interaction','d',c("activates","inhibits","interacts"),c("Arrow","T","None"))
+  edgeWidth <- mapVisualProperty('edge width','weight','p')
+
+  createVisualStyle(style.name, defaults, list(nodeLabels,nodeFills,arrowShapes,edgeWidth, nodeLabelSize))
+  setVisualStyle(style.name)
+}
+
 
