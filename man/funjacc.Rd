@@ -11,7 +11,7 @@ funjacc(
   data_types = c("GO:BP"),
   inflation = 2,
   species = "hsapiens",
-  default_node_label_size = 5,
+  default_node_label_size = 10,
   cluster_label_size = 20
 )
 }

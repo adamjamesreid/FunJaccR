@@ -38,7 +38,7 @@ default_colour = '#FDE725FF' # For if we run out of colours
 #' funjacc(gene_list, data_types=data_types, species='hsapiens', inflation=3)
 #' @export
 funjacc <- function(gene_list, p_cut = 0.01, jaccard_cut=0.5, data_types=c('GO:BP'), inflation=2, species='hsapiens',
-                    default_node_label_size=5, cluster_label_size=20){
+                    default_node_label_size=10, cluster_label_size=20){
 
   # This allows the use of 'all' to specify all the available data types, otherwise
   # we go with whatever set is supplied
@@ -163,6 +163,8 @@ annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size
   new_clusters <- 1:length(old_clusters)
   names(new_clusters) <- old_clusters
   cluster_df$cluster_number <- unlist(lapply(cluster_df$mcl_output, function(x) return(new_clusters[as.character(x)] )))
+  # Remove original mcl clustering numbers
+  cluster_df$mcl_output <- c()
 
   # Add cluster colours
   cluster_df$cluster_colour <- unlist(lapply(cluster_df$mcl_output, function(x) return(colours[x] )))
@@ -208,7 +210,6 @@ create_cytoscape_network <- function(funjacc_results, title="my first network", 
   # Create nodes data
   fj_nodes <- funjacc_results$annotation
   fj_nodes$id = rownames(funjacc_results$annotation)
-  fj_nodes$mcl_output <-c()
 
   # Create edges data
   fj_edges <- data.frame(source=funjacc_results$network$n1, target=funjacc_results$network$n2, weight=as.numeric(funjacc_results$network$j),
@@ -223,6 +224,7 @@ create_cytoscape_network <- function(funjacc_results, title="my first network", 
 set_cytoscape_style <- function(name="FunJaccStyle"){
   style.name = name
   defaults <- list(NODE_SHAPE="circle",
+                   NODE_SIZE=20,
                    EDGE_TRANSPARENCY=120,
                    NODE_LABEL_POSITION="W,E,c,0.00,0.00")
   nodeLabels <- mapVisualProperty('node label','term_name','p')
