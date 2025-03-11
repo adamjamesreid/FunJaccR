@@ -2,6 +2,10 @@
 # Copyright (C) 2025 University of Cambridge
 # This program is distributed under the terms of the GNU General Public License
 
+# funjacc R package
+# Analyse a gene list to generate clustered functional terms and a Cytoscape network
+
+
 library(gprofiler2)
 library(stringr)
 library(MCL)
