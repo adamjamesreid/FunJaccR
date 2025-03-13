@@ -11,6 +11,10 @@ library(stringr)
 library(MCL)
 library(gRbase)
 
+## this should be optional
+# load cytoscape package
+library(RCy3)
+
 # Colour for annotating clusters
 colours = c('#FFC312','#C4E538','#12CBC4','#FDA7DF','#ED4C67',
             '#F79F1F','#A3CB38','#1289A7','#D980FA','#B53471',
@@ -35,7 +39,7 @@ default_colour = '#FDE725FF' # For if we run out of colours
 #' @param cluster_label_size Node size for cluster labels in Cytoscape plotting
 #' @return list of results elements 'annotation' = clusters and their annotation, 'network' = network of clusters
 #' @examples
-#' funjacc(gene_list, data_types=data_types, species='hsapiens', inflation=3)
+#' funjacc(gene_list, data_types='all', species='hsapiens', inflation=2)
 #' @export
 funjacc <- function(gene_list, p_cut = 0.01, jaccard_cut=0.5, data_types=c('GO:BP'), inflation=2, species='hsapiens',
                     default_node_label_size=10, cluster_label_size=20){
@@ -74,6 +78,12 @@ funjacc <- function(gene_list, p_cut = 0.01, jaccard_cut=0.5, data_types=c('GO:B
   return(list(annotation=cluster_annotation, network=network))
 }
 
+#' Run gProfiler
+#'
+#' Get gProfiler results for further processing
+#' @param gene_list List of genes in which to look for enriched terms
+#' @param organism Name of species relating to gene list
+#' @importFrom gprofiler2 gost
 run_gprofiler <- function(gene_list, organism) {
   # Run gProfiler (evcodes =TRUE gives us the genes associated with each term)
   gprof_res <- gprofiler2::gost(query = gene_list,
@@ -88,7 +98,7 @@ run_gprofiler <- function(gene_list, organism) {
   return(gprof_res)
 }
 
-
+#' @importFrom stringr str_split
 create_edges <- function(gprofiler_results, data_types, p_cut, jaccard_cut){
 
   # Filter results based on pvalue
@@ -128,6 +138,8 @@ create_edges <- function(gprofiler_results, data_types, p_cut, jaccard_cut){
   return(network_df)
 }
 
+#' @importFrom gRbase ug
+#' @importFrom MCL mcl
 find_clusters <- function(network_df, inflation=2, max_iter=1000){
 
   # Subset dataframe for first two columns, then split the dataframe by rows
@@ -163,8 +175,6 @@ annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size
   new_clusters <- 1:length(old_clusters)
   names(new_clusters) <- old_clusters
   cluster_df$cluster_number <- unlist(lapply(cluster_df$mcl_output, function(x) return(new_clusters[as.character(x)] )))
-  # Remove original mcl clustering numbers
-  cluster_df$mcl_output <- c()
 
   # Add cluster colours
   cluster_df$cluster_colour <- unlist(lapply(cluster_df$mcl_output, function(x) return(colours[x] )))
@@ -187,6 +197,9 @@ annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size
   # Add node label sizes for Cytoscape
   cluster_df$node_label_size = lapply(cluster_df$term_name == cluster_df$cluster_names, function(x) ifelse(x==TRUE, cluster_label_size, default_node_label_size))
 
+  # Remove original mcl clustering numbers
+  cluster_df$mcl_output <- c()
+
   return(cluster_df)
 }
 
@@ -199,10 +212,9 @@ annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size
 #' @return Sets up a network in your Cytoscape application
 #' @examples
 #' create_cytoscape_network(funjacc_res, title="Test network")
+#' @import RCy3
 #' @export
 create_cytoscape_network <- function(funjacc_results, title="my first network", collection="Funjacc Networks"){
-  # load cytoscape package
-  library(RCy3)
   # Check cytoscape connection
   cytoscapePing ()
   cytoscapeVersionInfo ()
@@ -221,6 +233,7 @@ create_cytoscape_network <- function(funjacc_results, title="my first network", 
   set_cytoscape_style()
 }
 
+#' @import RCy3
 set_cytoscape_style <- function(name="FunJaccStyle"){
   style.name = name
   defaults <- list(NODE_SHAPE="circle",
@@ -238,3 +251,12 @@ set_cytoscape_style <- function(name="FunJaccStyle"){
 }
 
 
+#' Data file of gene lists for testing
+#'
+#' @author Adam Reid \email{ajr236@cam.ac.uk}
+"gene_list"
+
+#' Data file of output from run_funjacc function for testing create_cytoscape_network function
+#'
+#' @author Adam Reid \email{ajr236@cam.ac.uk}
+"funjacc_res"

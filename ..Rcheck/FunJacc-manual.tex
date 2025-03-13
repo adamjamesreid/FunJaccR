@@ -1,0 +1,176 @@
+\nonstopmode{}
+\documentclass[a4paper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\makeatletter\@ifl@t@r\fmtversion{2018/04/01}{}{\usepackage[utf8]{inputenc}}\makeatother
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `FunJacc'}}
+\par\bigskip{\large \today}
+\end{center}
+\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdftitle = {FunJacc: What the Package Does (Title Case)}}}{}
+\begin{description}
+\raggedright{}
+\item[Type]\AsIs{Package}
+\item[Title]\AsIs{What the Package Does (Title Case)}
+\item[Version]\AsIs{0.1.0}
+\item[Author]\AsIs{Who wrote it}
+\item[Maintainer]\AsIs{The package maintainer }\email{yourself@somewhere.net}\AsIs{}
+\item[Description]\AsIs{More about what it does (maybe more than one line)
+Use four spaces when indenting paragraphs within the Description.}
+\item[License]\AsIs{What license is it under?}
+\item[Encoding]\AsIs{UTF-8}
+\item[LazyData]\AsIs{true}
+\item[RoxygenNote]\AsIs{7.3.2}
+\item[Imports]\AsIs{MCL, RCy3, gprofiler2, gRbase, stringr}
+\end{description}
+\Rdcontents{Contents}
+\HeaderA{create\_cytoscape\_network}{Create a FunJacc network in Cytoscape}{create.Rul.cytoscape.Rul.network}
+%
+\begin{Description}
+Draw the FunJacc results as a network in an open instance of Cytoscape running on the same machine
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+create_cytoscape_network(
+  funjacc_results,
+  title = "my first network",
+  collection = "Funjacc Networks"
+)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{funjacc\_results}] Funjacc results
+
+\item[\code{title}] Network title
+
+\item[\code{collection}] Network collection
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+Sets up a network in your Cytoscape application
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+create_cytoscape_network(funjacc_res, title="Test network")
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{funjacc}{Run FunJacc}{funjacc}
+%
+\begin{Description}
+Determine enriched functional term clusters with FunJacc
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+funjacc(
+  gene_list,
+  p_cut = 0.01,
+  jaccard_cut = 0.5,
+  data_types = c("GO:BP"),
+  inflation = 2,
+  species = "hsapiens",
+  default_node_label_size = 10,
+  cluster_label_size = 20
+)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{gene\_list}] List of genes in which to look for enriched terms
+
+\item[\code{p\_cut}] P-value cutoff for gProfiler results
+
+\item[\code{jaccard\_cut}] Jaccard index cutoff for identifying high scoring links between terms
+
+\item[\code{data\_types}] List of functional terms to include e.g.c('GO:BP', 'GO:MF', 'GO:CC', 'KEGG', 'REAC', 'TF', 'MIRNA', 'CORUM', 'HP', 'HPA', 'WP'). Supplying 'all' will include all these terms
+
+\item[\code{inflation}] Inflation parameter for MCL clustering \textasciitilde{}0.5-2
+
+\item[\code{species}] Organism to use for gProfiler to interpret gene list e.g. 'hsapiens', 'mmusculus'
+
+\item[\code{default\_node\_label\_size}] Node size to use for Cytoscape plotting
+
+\item[\code{cluster\_label\_size}] Node size for cluster labels in Cytoscape plotting
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+list of results elements 'annotation' = clusters and their annotation, 'network' = network of clusters
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+funjacc(gene_list, data_types='all', species='hsapiens', inflation=2)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{funjacc\_res}{Data file of output from run\_funjacc function for testing create\_cytoscape\_network function}{funjacc.Rul.res}
+\keyword{datasets}{funjacc\_res}
+%
+\begin{Description}
+Data file of output from run\_funjacc function for testing create\_cytoscape\_network function
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+funjacc_res
+\end{verbatim}
+\end{Usage}
+%
+\begin{Format}
+An object of class \code{list} of length 2.
+\end{Format}
+%
+\begin{Author}
+Adam Reid \email{ajr236@cam.ac.uk}
+\end{Author}
+\HeaderA{gene\_list}{Data file of gene lists for testing}{gene.Rul.list}
+\keyword{datasets}{gene\_list}
+%
+\begin{Description}
+Data file of gene lists for testing
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+gene_list
+\end{verbatim}
+\end{Usage}
+%
+\begin{Format}
+An object of class \code{character} of length 79.
+\end{Format}
+%
+\begin{Author}
+Adam Reid \email{ajr236@cam.ac.uk}
+\end{Author}
+\HeaderA{run\_gprofiler}{Run gProfiler}{run.Rul.gprofiler}
+%
+\begin{Description}
+Get gProfiler results for further processing
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+run_gprofiler(gene_list, organism)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{gene\_list}] List of genes in which to look for enriched terms
+
+\item[\code{organism}] Name of species relating to gene list
+\end{ldescription}
+\end{Arguments}
+\printindex{}
+\end{document}

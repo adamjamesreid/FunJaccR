@@ -39,5 +39,5 @@ list of results elements 'annotation' = clusters and their annotation, 'network'
 Determine enriched functional term clusters with FunJacc
 }
 \examples{
-funjacc(gene_list, data_types=data_types, species='hsapiens', inflation=3)
+funjacc(gene_list, data_types='all', species='hsapiens', inflation=2)
 }

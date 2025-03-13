@@ -1,0 +1,7 @@
+create_cytoscape_network
+                        Create a FunJacc network in Cytoscape
+funjacc                 Run FunJacc
+funjacc_res             Data file of output from run_funjacc function
+                        for testing create_cytoscape_network function
+gene_list               Data file of gene lists for testing
+run_gprofiler           Run gProfiler
