@@ -3,7 +3,7 @@ Functional analysis of gene lists using clustering in R
 
 ## Installation
 
-Currently FunJacc is available as a GitHub project and can be installed as follows:
+Currently FunJaccR is available as a GitHub project and can be installed as follows:
 
 1. Clone the repository
 
@@ -47,6 +47,6 @@ create_cytoscape_network(funjacc_res, title="Test network")
 
 ## Usage
 
-The only essential input is a vecror of gene names suitable for gProfiler
+The only essential input is a vector of gene names suitable for gProfiler
 
 See `?funjacc` and `?create_cytoscape_network` for more details
