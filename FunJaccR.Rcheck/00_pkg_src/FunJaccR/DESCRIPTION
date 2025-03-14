@@ -1,6 +1,7 @@
 Package: FunJaccR
 Type: Package
-Title: Interpretation of Gene Lists Using Clustering of Functionally Enriched Terms
+Title: Interpretation of Gene Lists Using Clustering of Functionally
+        Enriched Terms
 Version: 0.1.0
 Authors@R: person("Adam", "Reid", email = "ajr236@cam.ac.uk", role = c("aut", "cre"))
 Description: Given a gene list, funtionally enriched terms are determined using gProfiler.
@@ -10,9 +11,9 @@ License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
-Imports:
-    MCL,
-    RCy3,
-    gprofiler2,
-    gRbase,
-    stringr
+Imports: MCL, RCy3, gprofiler2, gRbase, stringr
+NeedsCompilation: no
+Packaged: 2025-03-13 14:59:50 UTC; adamreid
+Author: Adam Reid [aut, cre]
+Maintainer: Adam Reid <ajr236@cam.ac.uk>
+Depends: R (>= 3.5.0)
