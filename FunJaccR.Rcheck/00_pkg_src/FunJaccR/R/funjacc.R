@@ -5,15 +5,6 @@
 # funjacc R package
 # Analyse a gene list to generate clustered functional terms and a Cytoscape network
 
-library(gprofiler2)
-library(stringr)
-library(MCL)
-library(gRbase)
-
-## this should be optional
-# load cytoscape package
-library(RCy3)
-
 # Colour for annotating clusters
 colours = c('#FFC312','#C4E538','#12CBC4','#FDA7DF','#ED4C67',
             '#F79F1F','#A3CB38','#1289A7','#D980FA','#B53471',
@@ -211,7 +202,7 @@ annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size
 #' @return Sets up a network in your Cytoscape application
 #' @examples
 #' create_cytoscape_network(funjacc_res, title="Test network")
-#' @import RCy3
+#' @importFrom RCy3 cytoscapePing cytoscapeVersionInfo createNetworkFromDataFrames set_cytoscape_style
 #' @export
 create_cytoscape_network <- function(funjacc_results, title="my first network", collection="Funjacc Networks"){
   # Check cytoscape connection

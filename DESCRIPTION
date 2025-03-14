@@ -6,7 +6,7 @@ Authors@R: person("Adam", "Reid", email = "ajr236@cam.ac.uk", role = c("aut", "c
 Description: Given a gene list, funtionally enriched terms are determined using gProfiler.
     MCL is used to cluster these terms based on the Jaccard similarity of the lists of genes associated with them.
     This can be visualised in Cytoscape using the RCy3 package.
-License: GPL (>=3)
+License: GPL (>=3) + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2

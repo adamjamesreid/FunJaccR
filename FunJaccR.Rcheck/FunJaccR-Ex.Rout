@@ -27008,7 +27008,7 @@ $network
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  102.748 3.503 136.202 0 0 
+Time elapsed:  103.593 3.758 128.329 0 0 
 > grDevices::dev.off()
 null device 
           1 
