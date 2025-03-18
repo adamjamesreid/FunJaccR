@@ -45,3 +45,24 @@ create_cytoscape_network(funjacc_res, title="Test network")
 The only essential input is a vector of gene names suitable for gProfiler
 
 See `?funjacc` and `?create_cytoscape_network` for more details
+
+## Understanding the output
+
+The `funjacc()` function returns a list of two tables 'annotation' and 'network'.
+
+The `funjacc_res$annotation` table has term ids as row names, along with the following named columns:
+
+* term_name - Full name of the term
+* term_type - Source of the term e.g. GO:BP (Gene Ontology, Biological Process), CORUM etc. see [gProfiler docs](https://biit.cs.ut.ee/gprofiler/page/docs) for more info
+* p_value - gProfiler p-value for term enrichment 
+* cluster_number - FunJaccR cluster number
+* cluster_colour - Colour for this cluster in Cytoscape plots
+* cluster_names - Name for the cluster (term name with lowest p-value in this cluster)
+* genes - Genes from your gene list which are associated with this term
+* node_label_size - Used for Cytoscape plotting
+
+The `funjacc_res$network` table represents the network of terms based on the overlap of genes associated with them, it has three columns:
+
+* n1 - A functional term
+* n2 - Another functional term
+* j - Jaccard index of the lists of genes associated with the two terms
