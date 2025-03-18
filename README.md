@@ -1,6 +1,11 @@
 # FunJaccR
 Functional analysis of gene lists using clustering in R
 
+FunJaccR uses [gProfiler](https://doi.org/10.1093/nar/gkad347) to determine functional terms enriched in a gene list. It then uses the genes from the list which are associated with each enriched term to 
+calculate the Jaccard similarity of each pair of terms. The similarity of the terms is therefore driven by the genes of interest rather than by prior knowledge, such as is used in many other approaches.
+The resulting network of term similarities is clustered using the [MCL](https://doi.org/10.1093/nar/30.7.1575) algorithm. The resulting clusters are labelled and can be investigated as a table or visualised in [Cytoscape](https://doi.org/10.1101/gr.1239303). 
+This approach means that rather than digesting potentially hundreds of function terms associated with your gene list, you can consider tens of clusters of related terms instead.
+
 ## Installation
 
 FunJaccR is available as an R package and can be installed as follows:
