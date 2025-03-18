@@ -57,7 +57,7 @@ The `funjacc_res$annotation` table has term ids as row names, along with the fol
 * p_value - gProfiler p-value for term enrichment 
 * cluster_number - FunJaccR cluster number
 * cluster_colour - Colour for this cluster in Cytoscape plots
-* cluster_names - Name for the cluster (term name with lowest p-value in this cluster)
+* cluster_names - Name of the FunJacc cluster (term name with lowest p-value in this cluster)
 * genes - Genes from your gene list which are associated with this term
 * node_label_size - Used for Cytoscape plotting
 
