@@ -48,7 +48,7 @@ See `?funjacc` and `?create_cytoscape_network` for more details
 
 ## Understanding the output
 
-The `funjacc()` function returns a list of two tables 'annotation' and 'network'.
+The `funjacc()` function returns a list with two tables 'annotation' and 'network'.
 
 The `funjacc_res$annotation` table has term ids as row names, along with the following named columns:
 
