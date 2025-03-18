@@ -3,11 +3,9 @@ Functional analysis of gene lists using clustering in R
 
 ## Installation
 
-Currently FunJaccR is available as a GitHub project and can be installed as follows:
+FunJaccR is available as an R package and can be installed as follows:
 
-1. Clone the repository
-
-`git clone https://github.com/adamjamesreid/FunJaccR.git`
+1. Download the tarball FunJaccR_0.1.0.tar.gz
 
 2. Install dependendies in R
 
@@ -17,31 +15,28 @@ install.packages('MCL')
 install.packages('gprofiler2')
 install.packages("stringr")
 
-# Optional for drawing Cytoscape networks
+# For drawing Cytoscape networks
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("RCy3")
 ```
 
-You can (optionally) get Cytoscape from [here](https://cytoscape.org/download.html)
+3. Install FunJaccR on the command line
+   
+`R CMD install FunJaccR_0.1.0.tar.gz`
+
+4. You can download Cytoscape from [here](https://cytoscape.org/download.html)
 
 ## Create an R script to load the package and run the test
 
 ```
-# Set working directory to the FunJaccR package
-setwd("FunJaccR/")
-
 # Load funjacc package
-library(devtools)
-load_all(".")
-
-# Read in example gene list
-gene_list <- as.vector(read.csv('test.list', header=FALSE))$V1
+library(FunJaccR)
 
 # Run Funjacc
 funjacc_res <- funjacc(gene_list, data_types='all', species='hsapiens', inflation=2)
 
-# Create Cytoscape network (requires RCy3 and an open Cytoscape session on the same machine as R)
+# Create Cytoscape network (requires an open Cytoscape session on the same machine which R is running on)
 create_cytoscape_network(funjacc_res, title="Test network")
 ```
 
