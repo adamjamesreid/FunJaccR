@@ -47,7 +47,7 @@ create_cytoscape_network(funjacc_res, title="Test network")
 
 ## Usage
 
-The only essential input is a vector of gene names suitable for gProfiler
+The only essential input is a vector of gene names suitable for gProfiler (see the `gene_list` example bundled with the package)
 
 See `?funjacc` and `?create_cytoscape_network` for more details
 
