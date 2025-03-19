@@ -15,15 +15,17 @@ FunJaccR is available as an R package and can be installed as follows:
 2. Install dependendies in R
 
 ```
-install.packages('gRbase')
-install.packages('MCL')
-install.packages('gprofiler2')
-install.packages("stringr")
-
-# For drawing Cytoscape networks
+# For drawing Cytoscape networks install RCy3 from Bioconductor
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("RCy3")
+
+# Install devtools if necessary
+install.packages("devtools")
+
+# Devtools handles the CRAN dependencies
+library(devtools)
+install_github("adamjamesreid/funjaccr")
 ```
 
 3. Install FunJaccR on the command line
