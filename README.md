@@ -10,9 +10,7 @@ This approach means that rather than digesting potentially hundreds of function 
 
 FunJaccR is available as an R package and can be installed as follows:
 
-1. Download the tarball FunJaccR_0.1.0.tar.gz
-
-2. Install dependendies in R
+1. Install dependendies in R
 
 ```
 # For drawing Cytoscape networks install RCy3 from Bioconductor
@@ -23,16 +21,12 @@ BiocManager::install("RCy3")
 # Install devtools if necessary
 install.packages("devtools")
 
-# Devtools handles the CRAN dependencies
+# Devtools handles the CRAN dependencies and install FunJaccR
 library(devtools)
 install_github("adamjamesreid/funjaccr")
 ```
 
-3. Install FunJaccR on the command line
-   
-`R CMD install FunJaccR_0.1.0.tar.gz`
-
-4. You can download Cytoscape from [here](https://cytoscape.org/download.html)
+2. You can download Cytoscape from [here](https://cytoscape.org/download.html)
 
 ## Create an R script to load the package and run the test
 
