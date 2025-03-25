@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  14 MAR 2025 09:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.13)  25 MAR 2025 14:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -351,8 +351,8 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count302
 \l__pdf_internal_box=\box59
 )
-(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmphmRjws/Rd2pdf569e
-4b69fcda/Rd2.aux)
+(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmpBcXCaG/Rd2pdf7560
+616d1e90/Rd2.aux)
 \openout1 = `Rd2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -390,10 +390,10 @@ LaTeX Font Info:    ... okay on input line 8.
 )
 Package hyperref Info: Link coloring ON on input line 8.
 
-(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmphmRjws/Rd2pdf569e
-4b69fcda/Rd2.out)
-(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmphmRjws/Rd2pdf569e
-4b69fcda/Rd2.out)
+(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmpBcXCaG/Rd2pdf7560
+616d1e90/Rd2.out)
+(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmpBcXCaG/Rd2pdf7560
+616d1e90/Rd2.out)
 \@outlinefile=\write4
 \openout4 = `Rd2.out'.
 
@@ -406,8 +406,8 @@ File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 10.0pt on input line 32.
 
-(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmphmRjws/Rd2pdf569e
-4b69fcda/Rd2.toc
+(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmpBcXCaG/Rd2pdf7560
+616d1e90/Rd2.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
 
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -462,8 +462,8 @@ cre-
 
 [3{/usr/local/texlive/2025basic/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.e
 nc}]
-(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmphmRjws/Rd2pdf569e
-4b69fcda/Rd2.ind
+(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmpBcXCaG/Rd2pdf7560
+616d1e90/Rd2.ind
 
 [4]
 
@@ -473,8 +473,8 @@ nc}]
 
 
 ])
-(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmphmRjws/Rd2pdf569e
-4b69fcda/Rd2.aux)
+(/private/var/folders/xs/1t7zc2091zn87jccy61bxvgm0000gn/T/RtmpBcXCaG/Rd2pdf7560
+616d1e90/Rd2.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>

@@ -202,7 +202,7 @@ annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size
 #' @return Sets up a network in your Cytoscape application
 #' @examples
 #' create_cytoscape_network(funjacc_res, title="Test network")
-#' @importFrom RCy3 cytoscapePing cytoscapeVersionInfo createNetworkFromDataFrames set_cytoscape_style
+#' @importFrom RCy3 cytoscapePing cytoscapeVersionInfo createNetworkFromDataFrames
 #' @export
 create_cytoscape_network <- function(funjacc_results, title="my first network", collection="Funjacc Networks"){
   # Check cytoscape connection
