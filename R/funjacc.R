@@ -74,6 +74,7 @@ funjacc <- function(gene_list, p_cut = 0.01, jaccard_cut=0.5, data_types=c('GO:B
 #' @param gene_list List of genes in which to look for enriched terms
 #' @param organism Name of species relating to gene list
 #' @importFrom gprofiler2 gost
+#' @export
 run_gprofiler <- function(gene_list, organism) {
   # Run gProfiler (evcodes =TRUE gives us the genes associated with each term)
   gprof_res <- gprofiler2::gost(query = gene_list,
@@ -89,6 +90,7 @@ run_gprofiler <- function(gene_list, organism) {
 }
 
 #' @importFrom stringr str_split
+#' @export
 create_edges <- function(gprofiler_results, data_types, p_cut, jaccard_cut){
 
   # Filter results based on pvalue
@@ -130,6 +132,7 @@ create_edges <- function(gprofiler_results, data_types, p_cut, jaccard_cut){
 
 #' @importFrom gRbase ug
 #' @importFrom MCL mcl
+#' @export
 find_clusters <- function(network_df, inflation=2, max_iter=1000){
 
   # Subset dataframe for first two columns, then split the dataframe by rows
@@ -146,6 +149,7 @@ find_clusters <- function(network_df, inflation=2, max_iter=1000){
   return(term_clusters)
 }
 
+#' @export
 annotate_clusters <- function(mcl_output, gprof_results, default_node_label_size, cluster_label_size){
   # Annotate terms with term name, cluster name, cluster colour
   # Make a dataframe
