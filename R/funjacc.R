@@ -123,8 +123,10 @@ create_edges <- function(gprofiler_results, data_types, p_cut, jaccard_cut){
   # Add in unconnected terms
   seen_terms <- union(network_df$n1, network_df$n2)
   orphan_terms <- subset(gprof_res_filt, !(gprof_res_filt$term_id %in% seen_terms))$term_id
-  for (i in 1:length(orphan_terms)) {
-    network_df <- rbind(network_df, c(orphan_terms[i], orphan_terms[i], 1))
+  if (length(orphan_terms) > 0) {
+    for (i in 1:length(orphan_terms)) {
+      network_df <- rbind(network_df, c(orphan_terms[i], orphan_terms[i], 1))
+    }
   }
 
   return(network_df)
